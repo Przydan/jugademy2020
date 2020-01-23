@@ -30,7 +30,7 @@ public class TwitterProducer {
 
     private static Logger logger = LoggerFactory.getLogger(TwitterProducer.class.getName());
 
-    private List<String> terms = Lists.newArrayList("mongodb", "java", "starwars");
+    private List<String> terms = Lists.newArrayList("witcher", "Witcher", "Wiedźmin", "wiedźmin", "wiedzmin");
 
     public static void main(String[] args) throws InterruptedException {
         Properties prop = new Properties();
@@ -59,10 +59,10 @@ public class TwitterProducer {
                     + prop.getProperty("mongo.user")
                     + ":"
                     + prop.getProperty("mongo.password")
-                    + "@cluster0-x1pch.mongodb.net/test?retryWrites=true&w=majority";
+                    + "@przydancluster-ewm2q.mongodb.net/test?retryWrites=true&w=majority";
             mongoClient = MongoClients.create(
                     connectionString);
-            MongoDatabase database = mongoClient.getDatabase("jugadamy");
+            MongoDatabase database = mongoClient.getDatabase("PrzydandemoDB");
             MongoCollection<Document> tweets = database.getCollection("tweets");
 
             while (!client.isDone()) {
@@ -95,7 +95,7 @@ public class TwitterProducer {
                 prop.getProperty("secret"));
 
         ClientBuilder builder = new ClientBuilder()
-                .name("Jugademy2020")
+                .name("PrzydandemoDB")
                 .hosts(streamHost)
                 .authentication(auth)
                 .endpoint(endpoint)
